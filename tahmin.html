@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dünya Kupası 2026 - Tahmin Listesi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #1a1a1b;
+        }
+
+        /* Üst Bilgi Çubuğu */
+        .header {
+            background: linear-gradient(90deg, #003580, #011d44);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 { margin: 0; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .user-info { font-size: 0.9rem; color: #ffd700; margin-top: 5px; }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        /* Grup Başlıkları */
+        .group-header {
+            background-color: #ffd700;
+            color: #011d44;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 800;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        /* Maç Kartı */
+        .match-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .match-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .team-box {
+            display: flex;
+            align-items: center;
+            width: 35%;
+        }
+
+        .team-box.home { justify-content: flex-end; text-align: right; }
+        .team-box.away { justify-content: flex-start; text-align: left; }
+
+        .team-name { font-weight: 600; font-size: 1rem; margin: 0 15px; }
+
+        .flag {
+            width: 40px;
+            height: 28px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+
+        /* Skor Giriş Alanları */
+        .score-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 20%;
+            justify-content: center;
+        }
+
+        .score-input {
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background: #f9f9f9;
+            transition: all 0.3s;
+        }
+
+        .score-input:focus {
+            outline: none;
+            border-color: #003580;
+            background: white;
+            box-shadow: 0 0 8px rgba(0,53,128,0.2);
+        }
+
+        .separator { font-weight: bold; font-size: 1.2rem; color: #999; }
+
+        /* Kaydet Butonu */
+        .save-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .btn-save {
+            background: linear-gradient(45deg, #28a745, #218838);
+            color: white;
+            padding: 18px 60px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-save:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(40, 167, 69, 0.4);
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 600px) {
+            .team-name { font-size: 0.8rem; margin: 0 8px; }
+            .flag { width: 30px; height: 20px; }
+            .score-input { width: 35px; height: 35px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>2026 Grup Maçları Tahminleri</h1>
+        <div class="user-info" id="userInfo">Hoş geldin!</div>
+    </div>
+
+    <div class="container" id="mainContainer">
+        </div>
+
+    <div class="save-section">
+        <button class="btn-save" onclick="savePredictions()">Tahminlerimi Kaydet</button>
+    </div>
+
+    <script>
+        // Kullanıcı adını al
+        const username = localStorage.getItem('wc_user') || 'Kullanıcı';
+        document.getElementById('userInfo').innerText = "Tahminci: " + username;
+
+        // Maç verileri (Örnek Liste)
+        const groups = [
+            {
+                title: "A GRUBU",
+                matches: [
+                    { home: "Meksika", homeCode: "mx", away: "Kanada", awayCode: "ca" },
+                    { home: "ABD", homeCode: "us", away: "Panama", awayCode: "pa" }
+                ]
+            },
+            {
+                title: "B GRUBU",
+                matches: [
+                    { home: "Türkiye", homeCode: "tr", away: "İtalya", awayCode: "it" },
+                    { home: "Arjantin", homeCode: "ar", away: "Fransa", awayCode: "fr" }
+                ]
+            },
+            {
+                title: "C GRUBU",
+                matches: [
+                    { home: "Brezilya", homeCode: "br", away: "Almanya", awayCode: "de" },
+                    { home: "İspanya", homeCode: "es", away: "Portekiz", awayCode: "pt" }
+                ]
+            }
+        ];
+
+        const container = document.getElementById('mainContainer');
+
+        // Maçları listeleme
+        groups.forEach(group => {
+            // Grup başlığı
+            const gHeader = document.createElement('div');
+            gHeader.className = 'group-header';
+            gHeader.innerText = group.title;
+            container.appendChild(gHeader);
+
+            // Maç kartları
+            group.matches.forEach(match => {
+                const card = document.createElement('div');
+                card.className = 'match-card';
+                card.innerHTML = `
+                    <div class="team-box home">
+                        <span class="team-name">${match.home}</span>
+                        <img src="https://flagcdn.com/w80/${match.homeCode}.png" class="flag">
+                    </div>
+                    <div class="score-container">
+                        <input type="number" class="score-input" min="0" placeholder="0">
+                        <span class="separator">-</span>
+                        <input type="number" class="score-input" min="0" placeholder="0">
+                    </div>
+                    <div class="team-box away">
+                        <img src="https://flagcdn.com/w80/${match.awayCode}.png" class="flag">
+                        <span class="team-name">${match.away}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        });
+
+        function savePredictions() {
+            alert("Tebrikler " + username + "! Tüm tahminlerin başarıyla kaydedildi.");
+            // Burada tahminleri bir diziye toplayıp sunucuya gönderme işlemi yapılabilir.
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dünya Kupası 2026 - Rengarenk Giriş</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+		.bg-image {
+			background-image: url('file:///D:/github/wcup26/wcup.jpg');
+			height: 100vh;
+			width: 100vw;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%; 
+			position: fixed;
+		}
+
+        /* Rengarenk Animasyonlu Katman */
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Dünya kupası renklerini temsil eden dinamik gradyan */
+            background: linear-gradient(45deg, 
+                rgba(255, 0, 0, 0.4), 
+                rgba(0, 255, 0, 0.4), 
+                rgba(0, 0, 255, 0.4), 
+                rgba(255, 255, 0, 0.4), 
+                rgba(255, 0, 255, 0.4));
+            background-size: 400% 400%;
+            animation: rainbowGradient 10s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Renk geçiş animasyonu */
+        @keyframes rainbowGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            width: 400px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Hafif yukarı aşağı yüzme efekti */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 { 
+            font-size: 2rem; 
+            margin-bottom: 2rem; 
+            color: #fff; 
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Harf harf renkli başlık efekti için */
+        .w { color: #FFD700; } /* Altın */
+        .c { color: #00FF00; } /* Yeşil */
+        .u { color: #00FFFF; } /* Mavi */
+        .p { color: #FF4500; } /* Turuncu */
+
+        input {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 2rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            /* Buton da rengarenk bir gradyana sahip */
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
+            background-size: 200% auto;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.5s;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-position: right center;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-image">
+        <div class="bg-overlay">
+            <div class="login-card">
+                <h1>
+                    <span class="w">D</span>ünya 
+                    <span class="c">K</span>upası 
+                    <span class="u">2</span><span class="p">026</span><br>
+                    Tahminleri
+                </h1>
+                <input type="text" id="username" placeholder="⚽ Adınızı buraya yazın..." required>
+                <button onclick="login()">Karnavala Katıl!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const user = document.getElementById('username').value;
+            if (user.trim() !== "") {
+                localStorage.setItem('wc_user', user);
+                window.location.href = 'tahmin.html';
+            } else {
+                alert("Lütfen bir kullanıcı adı girin.");
+            }
+        }
+    </script>
+</body>
+</html>
