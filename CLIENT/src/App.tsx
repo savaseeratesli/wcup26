@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
+import bgImage from '../review/wcup.jpg';
 
 type MatchDto = {
   home: string;
   away: string;
   homeCode: string;
   awayCode: string;
+  date: string;
   homeScore: number;
   awayScore: number;
 };
@@ -19,6 +21,7 @@ type ApiMatchDto = {
   away: string;
   homeCode: string;
   awayCode: string;
+  date: string;
 };
 
 type PredictionDto = {
@@ -29,7 +32,7 @@ type PredictionDto = {
   awayScore: number;
 };
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:5230';
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:5132';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -68,6 +71,7 @@ function App() {
             away: match.away,
             homeCode: match.homeCode,
             awayCode: match.awayCode,
+            date: match.date,
             homeScore: 0,
             awayScore: 0
           }))
@@ -165,7 +169,18 @@ function App() {
 
   const renderLogin = () => (
     <div className="login-page">
-      <div className="bg-image" />
+      <div
+        className="bg-image"
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          height: '100vh',
+          width: '100vw',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '100% 100%',
+          position: 'fixed'
+        }}
+      />
       <div className="bg-overlay">
         <div className="login-card">
           <h1>
@@ -204,6 +219,7 @@ function App() {
             <div className="group-header">{group.title}</div>
             {group.matches.map((match, matchIndex) => (
               <div className="match-card" key={`${group.title}-${match.home}-${match.away}`}>
+                <div className="match-date">{new Date(match.date).toLocaleDateString('tr-TR', { weekday: 'short', day: 'numeric', month: 'long' })} {new Date(match.date).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}</div>
                 <div className="team-box home">
                   <span className="team-name">{match.home}</span>
                   <img
