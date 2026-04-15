@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
 var connectionString = builder.Configuration.GetConnectionString("WCup")
     ?? "Server=(localdb)\\MSSQLLocalDB;Database=WCup26Db;Trusted_Connection=True;MultipleActiveResultSets=true";
 
-builder.Services.AddDbContext<WCupDbContext>(options =>
+builder.Services.AddDbContextPool<WCupDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 var app = builder.Build();
@@ -28,7 +28,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<WCupDbContext>();
-    db.Database.EnsureCreated();
+    db.Database.Migrate();
 }
 
 // Configure the HTTP request pipeline.

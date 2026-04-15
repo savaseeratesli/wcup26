@@ -62,6 +62,10 @@ Controllers/
  MatchesController.cs
  PredictionsController.cs
 Data/WCupDbContext.cs
+Migrations/
+ 20260415104411_InitialCreate.cs
+ 20260415104411_InitialCreate.Designer.cs
+ WCupDbContextModelSnapshot.cs
 Models/
  MatchPrediction.cs
  User.cs
