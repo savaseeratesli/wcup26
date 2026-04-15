@@ -1,0 +1,25 @@
+# Build outputs
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Node
+node_modules/
+dist/
+.env
+
+# Logs
+*.log
+
+# JetBrains
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

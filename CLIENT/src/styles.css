@@ -1,0 +1,270 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f0f2f5;
+  color: #1a1a1b;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+.login-page,
+.app-container {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background: linear-gradient(135deg, #002a5c 0%, #0a2d4f 40%, #1e3d72 100%);
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.bg-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.login-card {
+  width: min(420px, 100%);
+  border-radius: 30px;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-card h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  color: white;
+  letter-spacing: 2px;
+}
+
+.login-card .subtitle {
+  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.login-card input {
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #800080);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.w { color: #ffd700; }
+.c { color: #00ff00; }
+.u { color: #00ffff; }
+.p { color: #ff4500; }
+
+.message {
+  margin-top: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.header {
+  background: linear-gradient(90deg, #003580, #011d44);
+  color: white;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.user-info {
+  margin-top: 8px;
+  color: #ffd700;
+  font-size: 0.95rem;
+}
+
+.logout-button {
+  background: #ffd700;
+  color: #011d44;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 18px;
+}
+
+.group-header {
+  display: inline-block;
+  background-color: #ffd700;
+  color: #011d44;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 800;
+  margin-top: 40px;
+  margin-bottom: 18px;
+}
+
+.match-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-radius: 18px;
+  background: white;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+.team-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 32%;
+}
+
+.team-box.home {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.team-box.away {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.team-name {
+  font-weight: 600;
+}
+
+.flag {
+  width: 40px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.score-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 24%;
+  justify-content: center;
+}
+
+.score-input {
+  width: 54px;
+  height: 52px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+}
+
+.score-input:focus {
+  outline: none;
+  border-color: #003580;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 53, 128, 0.15);
+}
+
+.separator {
+  font-weight: 800;
+  color: #666;
+}
+
+.save-section {
+  text-align: center;
+  margin: 40px 0 80px;
+}
+
+.btn-save {
+  background: linear-gradient(45deg, #28a745, #218838);
+  color: white;
+  padding: 18px 54px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(40, 167, 69, 0.24);
+}
+
+.btn-save:hover {
+  transform: scale(1.02);
+}
+
+.status-banner {
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 14px;
+  color: #856404;
+}
+
+@media (max-width: 760px) {
+  .match-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .team-box {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .score-container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header {
+    text-align: center;
+  }
+
+  .logout-button {
+    width: 100%;
+  }
+}
