@@ -39,6 +39,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [groups, setGroups] = useState<GroupDto[]>([]);
   const [message, setMessage] = useState('');
+  const [showSavedPopup, setShowSavedPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -151,6 +152,8 @@ function App() {
     }
 
     setMessage('Tahminlerin başarıyla kaydedildi!');
+    setShowSavedPopup(true);
+    window.setTimeout(() => setShowSavedPopup(false), 2500);
     setIsLoading(false);
   };
 
@@ -266,6 +269,15 @@ function App() {
             Tahminlerimi Kaydet
           </button>
         </div>
+
+        {showSavedPopup && (
+          <div className="popup-overlay">
+            <div className="popup-card">
+              <h2>Tahminleriniz kaydedildi!</h2>
+              <p>Verileriniz güvenli bir şekilde saklandı.</p>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
