@@ -58,6 +58,7 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 
 [sourceFiles]
 Controllers/
+ AdminController.cs
  AuthController.cs
  MatchesController.cs
  PredictionsController.cs
@@ -65,9 +66,12 @@ Data/WCupDbContext.cs
 Migrations/
  20260415104411_InitialCreate.cs
  20260415104411_InitialCreate.Designer.cs
+ 20260417085432_AddMatchResultsAndAdmin.cs
+ 20260417085432_AddMatchResultsAndAdmin.Designer.cs
  WCupDbContextModelSnapshot.cs
 Models/
  MatchPrediction.cs
+ MatchResult.cs
  User.cs
 obj/Debug/net10.0/
  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
